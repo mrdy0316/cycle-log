@@ -1,24 +1,12 @@
 version: '3'
+
 services:
-  https-portal:
-    image: steveltn/https-portal:1
-    ports:
-      - '80:80'
-      - '443:443'
-    links:
-      - php
-    restart: always
-    environment:
-      DOMAINS: 'localhost -> http://php:8888'
-      STAGE: LOCAL
-      # FORCE_RENEW: 'true'
   php:
     build: ./php
     volumes:
       - ./html:/var/www/html
     ports:
-      - 8888:80
-    #restart: always
+      - 80:80
   mysql:
     build: ./mysql
     volumes:
